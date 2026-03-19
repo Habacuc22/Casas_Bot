@@ -7,9 +7,9 @@ Desarrollado en Google Apps Script con Google Sheets como base de datos.
 
 ## ¿Qué hace este bot?
 
-Diego adelanta el pago de todas las boletas (impuestos y gastos comunes). Las otras casas le transfieren su parte. El bot registra cada gasto, divide el monto entre las casas que corresponde, registra las transferencias recibidas y calcula en tiempo real cuánto le debe cada casa a Diego.
+Nombre2 adelanta el pago de todas las boletas (impuestos y gastos comunes). Las otras casas le transfieren su parte. El bot registra cada gasto, divide el monto entre las casas que corresponde, registra las transferencias recibidas y calcula en tiempo real cuánto le debe cada casa a Nombre2.
 
-El saldo de Casa 2 (Diego) siempre tiende a cero cuando todo está saldado. Lo que no se salda en el mes se arrastra automáticamente al siguiente con precisión de centavos.
+El saldo de Casa 2 (Nombre2) siempre tiende a cero cuando todo está saldado. Lo que no se salda en el mes se arrastra automáticamente al siguiente con precisión de centavos.
 
 ---
 
@@ -17,9 +17,9 @@ El saldo de Casa 2 (Diego) siempre tiende a cero cuando todo está saldado. Lo q
 
 | Casa   | Integrantes              | Rol                        |
 |--------|--------------------------|----------------------------|
-| Casa 1 | Junior y Gaby            | Participan en gastos       |
-| Casa 2 | Diego y Nanci            | Opera el bot, adelanta pagos |
-| Casa 3 | Abu                      | Participa en gastos        |
+| Casa 1 | Nombre1                  | Participan en gastos       |
+| Casa 2 | Nombre2                  | Opera el bot, adelanta pagos |
+| Casa 3 | Nombre3                  | Participa en gastos        |
 
 ---
 
@@ -31,7 +31,7 @@ Telegram
 Google Apps Script  ←→  Google Sheets
 ```
 
-- **Telegram**: interfaz de usuario. Diego escribe comandos y recibe respuestas.
+- **Telegram**: interfaz de usuario. Nombre2 escribe comandos y recibe respuestas.
 - **Google Apps Script**: motor de toda la lógica. Recibe los mensajes, los procesa y escribe en Sheets.
 - **Google Sheets**: base de datos. Almacena gastos, transferencias, saldos e historial.
 
@@ -82,11 +82,11 @@ Al cargarlos el bot pregunta qué casas participan y el usuario responde con nú
 
 ## Flujo de trabajo mensual
 
-1. Llegan las boletas → Diego carga cada impuesto con monto y fecha de vencimiento opcional.
+1. Llegan las boletas → Nombre2 carga cada impuesto con monto y fecha de vencimiento opcional.
 2. El bot genera el resumen → detalle por impuesto y saldo de cada casa.
-3. Diego comparte el resumen con Casa 1 y Casa 3.
-4. Las casas transfieren (puede ser parcial) → Diego registra cada transferencia.
-5. Llegan boletas pendientes (ej: EPE) → Diego las carga, el bot actualiza el resumen.
+3. Nombre2 comparte el resumen con Casa 1 y Casa 3.
+4. Las casas transfieren (puede ser parcial) → Nombre2 registra cada transferencia.
+5. Llegan boletas pendientes (ej: EPE) → Nombre2 las carga, el bot actualiza el resumen.
 6. Se registran las transferencias restantes.
 7. Fin de mes → el sistema cierra automáticamente. Los saldos se arrastran al mes siguiente.
 
