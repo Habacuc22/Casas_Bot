@@ -115,9 +115,9 @@ const IMPUESTOS_VALIDOS = ['epe', 'agua', 'gas', 'tgi', 'api', 'internet', 'cabl
 //  CASAS
 // ============================================================
 const CASAS = {
-  casa1: { nombre: 'Casa 1', integrantes: 'Junior y Gaby'  },
-  casa2: { nombre: 'Casa 2', integrantes: 'Diego y Nanci'  },
-  casa3: { nombre: 'Casa 3', integrantes: 'Abu'            }
+  casa1: { nombre: 'Casa 1', integrantes: 'Nombre1'  },
+  casa2: { nombre: 'Casa 2', integrantes: 'Nombre2'  },
+  casa3: { nombre: 'Casa 3', integrantes: 'Nombre3'  }
 };
 
 
@@ -711,13 +711,13 @@ const MESES_TEXTO = {
 // ============================================================
 //  PROCESADOR PRINCIPAL DE MENSAJES
 //  Es el primer lugar donde llega cada mensaje.
-//  Decide qué función llamar según lo que escribió Diego.
+//  Decide qué función llamar según lo que escribió Nombre2.
 // ============================================================
 function procesarMensaje(message) {
   const chatId = message.chat.id;
   const text   = (message.text || '').trim();
 
-  // ── Seguridad: solo Diego puede usar el bot ───────────────
+  // ── Seguridad: solo Nombre2 puede usar el bot ───────────────
   if (!isAuthorized(chatId)) {
     sendMessage(chatId, '🚫 Acceso denegado. Este bot es privado.');
     Logger.log('Intento no autorizado desde chatId: ' + chatId);
@@ -727,7 +727,7 @@ function procesarMensaje(message) {
   registrarLog(chatId, text, '');
 
   // ── Si hay un flujo conversacional pendiente, continuar ───
-  // Esto ocurre cuando el bot está esperando que Diego responda
+  // Esto ocurre cuando el bot está esperando que Nombre2 responda
   // con los números de casas para un gasto eventual.
   const estadoPendiente = getEstadoConversacion(chatId);
   if (estadoPendiente) {
@@ -916,10 +916,10 @@ function cargarImpuestoFijo(chatId, nombreImpuesto, monto, fechaStr, timestampUn
 // ============================================================
 //  GASTO EVENTUAL — Paso 1: iniciar flujo
 //  El bot registra el gasto en estado pendiente y le pregunta
-//  a Diego qué casas participan.
+//  a Nombre2 qué casas participan.
 // ============================================================
 function iniciarGastoEventual(chatId, nombreGasto, monto, fechaStr) {
-  // Guardar el estado: estamos esperando que Diego diga qué casas
+  // Guardar el estado: estamos esperando que Nombre2 diga qué casas
   setEstadoConversacion(chatId, {
     accion:    'esperando_casas_eventual',
     nombre:    nombreGasto,
@@ -934,9 +934,9 @@ function iniciarGastoEventual(chatId, nombreGasto, monto, fechaStr) {
     `💰 Monto: *${fmt(monto)}*${fechaInfo}\n\n` +
     `¿Qué casas participan?\n\n` +
     `Respondé con los números separados por espacio:\n` +
-    `\`1\` → Solo Casa 1 (Junior y Gaby)\n` +
-    `\`2\` → Solo Casa 2 (Diego y Nanci)\n` +
-    `\`3\` → Solo Casa 3 (Abu)\n` +
+    `\`1\` → Solo Casa 1 (Nombre1)\n` +
+    `\`2\` → Solo Casa 2 (Nombre2)\n` +
+    `\`3\` → Solo Casa 3 (Nombre3)\n` +
     `\`1 2\` → Casa 1 y Casa 2\n` +
     `\`1 2 3\` → Las tres casas\n\n` +
     `_Escribí /cancelar para cancelar._`
@@ -1049,7 +1049,7 @@ function completarGastoEventual(chatId, text, estado) {
 // ============================================================
 //  REGISTRAR TRANSFERENCIA
 //  Formato: "pago casa1 30000"
-//  Registra que esa casa transfirió dinero a Diego.
+//  Registra que esa casa transfirió dinero a Nombre2.
 // ============================================================
 function registrarTransferencia(chatId, casa, monto, timestampUnix) {
   const fechaCarga = new Date(timestampUnix * 1000);
@@ -1198,7 +1198,7 @@ function getSaldoArrastrado(mesIndex, anio) {
 //  Junta gastos + transferencias + saldo arrastrado y devuelve
 //  el saldo actual de cada casa.
 //
-//  Saldo positivo = la casa le debe plata a Diego.
+//  Saldo positivo = la casa le debe plata a Nombre2.
 //  Saldo cero     = todo saldado.
 // ============================================================
 function calcularSaldos(mesIndex, anio) {
@@ -1688,7 +1688,7 @@ function iniciarEliminacion(chatId) {
 
 // ============================================================
 //  PROCESADOR DE CALLBACK QUERIES
-//  Llega acá cada vez que Diego presiona un botón inline.
+//  Llega acá cada vez que Nombre2 presiona un botón inline.
 //  Telegram nos manda el callback_data que pusimos al crear
 //  el botón.
 // ============================================================
